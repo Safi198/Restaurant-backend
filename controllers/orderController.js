@@ -1,6 +1,6 @@
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
-const { logger } = require("../middlewares/logger");
+const { logger } = require("../middleware/logger");
 
 const createOrder = async (req, res) => {
     try {

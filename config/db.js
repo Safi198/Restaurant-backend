@@ -1,17 +1,19 @@
-const mongoose = require("mongoose");
-const { logger } = require("../middleware/logger");
+const mongoose = require('mongoose');
+const { logger } = require('../middleware/logger');
+const dotenv = require("dotenv");
 
-const connectDB = async () => {
-    try {
-        const conn = await mongoose.connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+dotenv.config();
+
+const connectDB = () => {
+    mongoose
+        .connect(process.env.MONGO_URI)
+        .then(() => {
+            logger.info("MongoDB connected");
+        })
+        .catch((err) => {
+            logger.error(`MongoDB connection error: ${err.message}`);
+            process.exit(1);
         });
-        logger.info(`MongoDB Connected: ${conn.connection.host}`);
-    } catch (error) {
-        logger.error(`Error: ${error.message}`);
-        process.exit(1);
-    }
 };
 
 module.exports = connectDB;

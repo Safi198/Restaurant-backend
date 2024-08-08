@@ -1,13 +1,13 @@
-const Menu = require("../models/Menu");
-const { logger } = require("../middleware/logger");
+const Menu = require('../models/Menu');
+const { logger } = require('../middleware/logger');
 
 const getMenus = async (req, res) => {
     try {
-        const menus = await Menu.find({}).populate("products");
+        const menus = await Menu.find({}).populate('products');
         res.json(menus);
-    } catch (err) {
-        logger.error(`Error getting menus: ${err.message}`);
-        res.status(500).json({ message: err.message });
+    } catch (error) {
+        logger.error(`Error getting menus: ${error.message}`);
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -20,9 +20,10 @@ const createMenu = async (req, res) => {
         });
         const createdMenu = await menu.save();
         res.status(201).json(createdMenu);
-    } catch (err) {
-        logger.error(`Error creating menu: ${err.message}`);
-        res.status(500).json({ message: err.message });
+    } catch (error) {
+        logger.error(`Error creating menu: ${error.message}`);
+        res.status(500).json({ message: error.message });
     }
 };
+
 module.exports = { getMenus, createMenu };

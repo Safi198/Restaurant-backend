@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const { logger } = require("../middlewares/logger");
+const { logger } = require("../middleware/logger");
 
 const getProducts = async (req, res) => {
     try {
