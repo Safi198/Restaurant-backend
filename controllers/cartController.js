@@ -1,26 +1,49 @@
-const Cart = require('../models/Cart');
-const { logger } = require('../middleware/logger');
+const Cart = require("../models/Cart");
+const Product = require("../models/Product");
+const { logger } = require("../middleware/logger");
 
 const getCart = async (req, res) => {
     try {
-        const cart = await Cart.findOne({ user: req.user._id }).populate('products.product');
-        if (cart) {
-            res.json(cart);
-        } else {
-            res.status(404).json({ message: 'Cart not found' });
+        let cart = await Cart.findOne({ user: req.user._id }).populate(
+            "products.product"
+        );
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
         }
-    } catch (error) {
-        logger.error(`Error getting cart: ${error.message}`);
-        res.status(500).json({ message: error.message });
+
+        cart.totalPrice = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            cart.totalPrice +=
+                cart.products[i].quantity * cart.products[i].product.price;
+        }
+
+        await cart.save();
+
+        res.json(cart);
+    } catch (err) {
+        logger.error(`Error getting cart: ${err.message}`);
+        res.status(500).json({ message: err.message });
     }
 };
 
 const addToCart = async (req, res) => {
     try {
         const { productId, quantity } = req.body;
+
+        const product = await Product.findById(productId);
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
         let cart = await Cart.findOne({ user: req.user._id });
+
         if (cart) {
-            const productIndex = cart.products.findIndex(p => p.product.toString() === productId);
+            const productIndex = cart.products.findIndex(
+                (p) => p.product.toString() === productId
+            );
+
             if (productIndex >= 0) {
                 cart.products[productIndex].quantity += quantity;
             } else {
@@ -32,30 +55,58 @@ const addToCart = async (req, res) => {
                 products: [{ product: productId, quantity }],
             });
         }
-        cart.totalPrice = cart.products.reduce((total, p) => total + p.quantity * p.product.price, 0);
+
+        cart.totalPrice = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const productDetails = await Product.findById(
+                cart.products[i].product
+            );
+            cart.totalPrice += cart.products[i].quantity * productDetails.price;
+        }
+
         const updatedCart = await cart.save();
         res.status(201).json(updatedCart);
-    } catch (error) {
-        logger.error(`Error adding to cart: ${error.message}`);
-        res.status(500).json({ message: error.message });
+    } catch (err) {
+        logger.error(`Error adding to cart: ${err.message}`);
+        res.status(500).json({ message: err.message });
     }
 };
 
 const removeFromCart = async (req, res) => {
     try {
         const { productId } = req.body;
-        const cart = await Cart.findOne({ user: req.user._id });
-        if (cart) {
-            cart.products = cart.products.filter(p => p.product.toString() !== productId);
-            cart.totalPrice = cart.products.reduce((total, p) => total + p.quantity * p.product.price, 0);
-            const updatedCart = await cart.save();
-            res.status(201).json(updatedCart);
-        } else {
-            res.status(404).json({ message: 'Cart not found' });
+        let cart = await Cart.findOne({ user: req.user._id });
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
         }
-    } catch (error) {
-        logger.error(`Error removing from cart: ${error.message}`);
-        res.status(500).json({ message: error.message });
+
+        const productIndex = cart.products.findIndex(
+            (p) => p.product.toString() === productId
+        );
+
+        if (productIndex === -1) {
+            return res
+                .status(404)
+                .json({ message: "Product not found in cart" });
+        }
+
+        cart.products.splice(productIndex, 1);
+
+        cart.totalPrice = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const productDetails = await Product.findById(
+                cart.products[i].product
+            );
+            cart.totalPrice += cart.products[i].quantity * productDetails.price;
+        }
+
+        await cart.save(); // Save the cart to persist the changes
+
+        res.status(201).json(cart);
+    } catch (err) {
+        logger.error(`Error removing from cart: ${err.message}`);
+        res.status(500).json({ message: err.message });
     }
 };
 

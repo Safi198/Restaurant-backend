@@ -1,1 +1,20 @@
 {"level":"error","message":"MongoDB connection error: connect ECONNREFUSED 127.0.0.1:27017"}
+{"level":"error","message":"Error registering user: this.isModified is not a function"}
+{"level":"error","message":"Error registering user: this.isModified is not a function"}
+{"level":"error","message":"Error registering user: this.isModified is not a function"}
+{"level":"error","message":"Error registering user: this.isModified is not a function"}
+{"level":"error","message":"Error registering user: User already exists"}
+{"level":"error","message":"Error registering user: User validation failed: email: Path `email` is required."}
+{"level":"error","message":"Error registering user: User validation failed: email: Path `email` is required., password: Path `password` is required."}
+{"level":"error","message":"Error registering user: User already exists"}
+{"level":"error","message":"Error registering user: User validation failed: password: Path `password` is required."}
+{"level":"error","message":"Error registering user: User already exists"}
+{"level":"error","message":"Error registering user: User already exists"}
+{"level":"error","message":"Error authenticating user: Invalid email or password"}
+{"level":"error","message":"Error creating product: Product validation failed: name: Path `name` is required., description: Path `description` is required., category: Path `category` is required., price: Path `price` is required., image: Path `image` is required."}
+{"level":"error","message":"Error authenticating user: Invalid email or password"}
+{"level":"error","message":"Error authenticating user: Invalid email or password"}
+{"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
+{"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
+{"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
+{"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
