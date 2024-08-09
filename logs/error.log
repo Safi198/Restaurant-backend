@@ -18,3 +18,11 @@
 {"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
 {"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
 {"level":"error","message":"Error adding to cart: Cart validation failed: totalPrice: Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\""}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"MongoDB connection error: getaddrinfo ENOTFOUND mongodb.railway.internal"}
+{"level":"error","message":"Range Not Satisfiable"}

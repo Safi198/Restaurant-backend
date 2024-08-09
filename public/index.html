@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Backend API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="earth.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <h1>Restaurant Backend API Documentation</h1>
+    </header>
+
+    <section id="api-section">
+        <h2>Explore Our API</h2>
+        <p>Manage various aspects of a restaurant including products, user authentication, orders, and cart management.</p>
+
+        <div class="api-endpoints">
+            <h3>Available Endpoints</h3>
+            <ul>
+                <li class="endpoint">
+                    <h4>GET: /api/products - Fetch All Products</h4>
+                    <p>Retrieve a complete list of products available in the restaurant. This endpoint helps you get an overview of all items currently offered.</p>
+                    <code>
+GET /api/products HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>GET: /api/products/:id - Fetch a Product by ID</h4>
+                    <p>Retrieve detailed information about a specific product by its ID, including pricing, ingredients, and availability.</p>
+                    <code>
+GET /api/products/12345 HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>POST: /api/auth/register - Register a New User</h4>
+                    <p>Create a new user account by providing a unique email and password. This allows users to access personalized services and manage their orders.</p>
+                    <code>
+POST /api/auth/register HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Content-Type: application/json<br><br>
+{<br>
+  "name": "John Doe",<br>
+  "email": "john@example.com",<br>
+  "password": "password123"<br>
+}
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>POST: /api/auth/login - User Login</h4>
+                    <p>Authenticate a user by providing an email and password. Returns a JWT token upon successful login.</p>
+                    <code>
+POST /api/auth/login HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Content-Type: application/json<br><br>
+{<br>
+  "email": "john@example.com",<br>
+  "password": "password123"<br>
+}
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>GET: /api/cart - Get the User's Cart</h4>
+                    <p>Retrieve the current user's cart, including all products and quantities.</p>
+                    <code>
+GET /api/cart HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Authorization: Bearer YOUR_JWT_TOKEN
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>POST: /api/cart/add - Add a Product to the Cart</h4>
+                    <p>Add a product to the user's cart by specifying the product ID and quantity.</p>
+                    <code>
+POST /api/cart/add HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Content-Type: application/json<br>
+Authorization: Bearer YOUR_JWT_TOKEN<br><br>
+{<br>
+  "productId": "12345",<br>
+  "quantity": 2<br>
+}
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>POST: /api/cart/remove - Remove a Product from the Cart</h4>
+                    <p>Remove a specific product from the user's cart by providing the product ID.</p>
+                    <code>
+POST /api/cart/remove HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Content-Type: application/json<br>
+Authorization: Bearer YOUR_JWT_TOKEN<br><br>
+{<br>
+  "productId": "12345"<br>
+}
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>GET: /api/orders - Get All Orders for the User</h4>
+                    <p>Retrieve a list of all orders placed by the current user.</p>
+                    <code>
+GET /api/orders HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Authorization: Bearer YOUR_JWT_TOKEN
+                    </code>
+                </li>
+                <li class="endpoint">
+                    <h4>POST: /api/orders - Create a New Order</h4>
+                    <p>Create a new order using the current contents of the user's cart.</p>
+                    <code>
+POST /api/orders HTTP/1.1<br>
+Host: restaurant-backend-production-5748.up.railway.app<br>
+Content-Type: application/json<br>
+Authorization: Bearer YOUR_JWT_TOKEN<br><br>
+{<br>
+  "cartId": "67890",<br>
+  "address": "123 Main St, City, Country"<br>
+}
+                    </code>
+                </li>
+            </ul>
+        </div>
+
+        <p>For detailed API documentation, please refer to our <a href="/api-docs" target="_blank" class="swagger-link">Swagger documentation</a>.</p>
+    </section>
+
+    <footer>
+        <p class="footer-text">© 2024 Restaurant Backend API. All Rights Reserved. Created by <span>Shaheer Alam</span>, Backend Developer.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
