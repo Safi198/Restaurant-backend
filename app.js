@@ -27,6 +27,11 @@ app.use('/api/orders', orderRoutes);
 
 setupSwagger(app);
 
+// Simple GET route for the root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to the Restaurant Backend Server!');
+});
+
 app.use(errorHandler);
 
 module.exports = app;
