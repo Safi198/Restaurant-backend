@@ -144,3 +144,13 @@
 {"level":"info","message":"::ffff:127.0.0.1 - - [09/Aug/2024:05:23:51 +0000] \"POST /api/orders HTTP/1.1\" 201 300 \"-\" \"Thunder Client (https://www.thunderclient.com)\""}
 {"level":"info","message":"::ffff:127.0.0.1 - - [09/Aug/2024:05:24:16 +0000] \"POST /api/orders HTTP/1.1\" 201 296 \"-\" \"Thunder Client (https://www.thunderclient.com)\""}
 {"level":"info","message":"::ffff:127.0.0.1 - - [09/Aug/2024:05:24:46 +0000] \"GET /api/orders HTTP/1.1\" 200 1099 \"-\" \"Thunder Client (https://www.thunderclient.com)\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:06 +0000] \"GET /api-docs/ HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:06 +0000] \"GET /api-docs/swagger-ui.css HTTP/1.1\" 304 - \"http://localhost:3000/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:06 +0000] \"GET /api-docs/swagger-ui-bundle.js HTTP/1.1\" 304 - \"http://localhost:3000/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:06 +0000] \"GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1\" 304 - \"http://localhost:3000/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:06 +0000] \"GET /api-docs/swagger-ui-init.js HTTP/1.1\" 304 - \"http://localhost:3000/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [09/Aug/2024:05:26:18 +0000] \"GET /api/products HTTP/1.1\" 200 4394 \"http://localhost:3000/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36\""}
+{"level":"warn","message":"Not authorized, no token"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"MongoDB connected"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [09/Aug/2024:05:27:42 +0000] \"GET /api/cart HTTP/1.1\" 200 1287 \"-\" \"Thunder Client (https://www.thunderclient.com)\""}
